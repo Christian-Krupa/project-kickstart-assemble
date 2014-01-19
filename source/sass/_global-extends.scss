@@ -1,0 +1,54 @@
+//
+// Extends
+// -------
+//
+
+
+// a11y
+%a11y {
+	position: absolute;
+	top: -32768px;
+	left: -32768px;
+}
+
+// hide-text
+%hide-text {
+	overflow: hidden;
+	font: 0/0 serif;
+	text-shadow: none;
+	color: transparent;
+}
+
+// clearfix
+%cf {
+	&:before,
+	&:after {
+		display: table;
+		content: " ";
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+// ellipsis
+%ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// display: inline-block - parent
+%ib-parent {
+	display: table;
+	width: 100%;
+	word-spacing: -1em;
+}
+
+// display: inline-block - child
+%ib-child {
+	display: inline-block;
+	vertical-align: top;
+	word-spacing: 0;
+}
+

@@ -1,0 +1,16 @@
+{
+	"nolint": [
+		"jquery",
+		"polyfiller"
+	],
+	"nopack": [],
+	"includeSmallLoader": [
+		"__base-modules",
+		"__enhanced-modules"
+	],
+	"packageList": {
+		
+	},
+	"name": "Project Kickstart Assemble",
+	"obfuscate": true
+}

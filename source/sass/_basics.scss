@@ -1,0 +1,128 @@
+/**
+ * ---------------------------------------------------------------------------------------------------- #
+ *
+ * Basic Formattings
+ *
+ */
+ 
+body {
+	overflow-y: scroll;
+	font-family: $base-font;
+	font-size: $base-fontsize;
+	font-weight: 400;
+	line-height: $base-lineheight;
+	text-align: left;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	color: $main-color;
+	background: $main-bg-color;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+
+/**
+ * Headlines
+ */
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $headline-font;
+	font-weight: 400;
+}
+
+
+/**
+ * General Text Formattings
+ */
+
+strong {
+	font-weight: 700;
+}
+
+em {
+	font-style: italic;
+}
+
+address {
+	font-style: normal;
+}
+
+abbr {
+	border-bottom: 1px dotted #6e6e6e;
+	font-variant: small-caps;
+	letter-spacing: 1px;
+	cursor: help;
+}
+
+sub,
+sup {
+	position: relative;
+	font-size: 10px;
+	line-height: 10px;
+}
+
+sub {
+	top: 4px;
+}
+
+sup {
+	top: -6px;
+}
+
+q,
+cite,
+blockquote {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
+}
+
+pre,
+code {
+	background-color: #eee;
+}
+
+hr {
+	height: 1px;
+	margin: 0;
+	border: 0;
+	padding: 0;
+	background-color: #6e6e6e;
+}
+
+mark {
+	color: $main-color;
+	background: $highlight-color;
+}
+
+
+/**
+ * Textselection
+ */
+
+::-moz-selection {
+	text-shadow: none;
+	color: #fff;
+	background: $main-color;
+}
+
+::selection {
+	text-shadow: none;
+	color: #fff;
+	background: $main-color;
+}
+
+
+/**
+ * Monospaced Text
+ */
+
+pre,
+code,
+kbd,
+samp,
+var {
+	font-family: Consolas, "Lucida Console", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier;
+}
+
