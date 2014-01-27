@@ -2,7 +2,7 @@
  * Page Header
  * A description.
  *
- * Markup: 
+ * Markup:
  * <header class="b-page-header">
  *   <div class="logo">Logo</div>
  * </header>
@@ -19,7 +19,7 @@
 	@include respond-to(pad) {
 		background-color: #0f3;
 	}
-
+	
 	@include respond-to(phone) {
 		background-color: #30f;
 	}
