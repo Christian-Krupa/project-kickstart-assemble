@@ -9,17 +9,13 @@
 //
 // Sample input:
 // .element {
-//     @include rem('padding',10px 0 2px 5px);
+//     @include rem('padding', 10px 0 2px 5px);
 // }
 //
 // Sample output:
 // .element {
 //     padding: 10px 0 2px 5px;
 //     padding: 1rem 0 0.2rem 0.5rem;
-// }
-//
-// .element {
-//     @include rem(font-size, 16px);
 // }
 //
 // Baseline, measured in pixels
