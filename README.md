@@ -56,6 +56,7 @@ Or use `npm install` if your are on Windows (you have to check the requirements 
 - [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint)
 - [grunt-newer](https://github.com/tschaub/grunt-newer)
 - [grunt-packager](https://github.com/bobbor/grunt-packager)
+- [grunt-string-replace](https://github.com/erickrdch/grunt-string-replace)
 - [grunt-styleguide](https://github.com/indieisaconcept/grunt-styleguide)
 - [grunt-svgmin](https://github.com/sindresorhus/grunt-svgmin)
 - [grunt-sync](https://github.com/tomusdrw/grunt-sync)
@@ -126,32 +127,32 @@ Proposal:
 (This list is not intended to be exhaustive.)
 
 - Avoid element selectors.
-  - _bad:_ .foo div, .foo span, .foo ul
-  - _good:_ .foo .section, .foo .title, .foo .linklist
+  - __bad:__ .foo div, .foo span, .foo ul
+  - ___good:___ .foo .section, .foo .title, .foo .linklist
 - Avoid IDs where possible (exeption: e.g. in forms -> for-attribute).
-  - _bad:_ #sidebar
-  - _good:_ .sidebar
+  - __bad:__ #sidebar
+  - __good:__ .sidebar
 - Avoid qualifying class names with type selectors.
-  - _bad:_ ul.linklist, div.example, a.back 
-  - _good:_ .linklist, .example, .back
+  - __bad:__ ul.linklist, div.example, a.back 
+  - __good:__ .linklist, .example, .back
 - Avoid the descendant selector. Target directly if possible.
-  - _bad:_ .foo .bar .baz
-  - _good:_ .baz-header
+  - __bad:__ .foo .bar .baz
+  - __good:__ .baz-header
 - Use shorthand properties where possible.
-  - _bad:_ padding-top: 0; padding-right: 1em; padding-bottom: 2em; padding-left: 1em;
-  - _good:_ padding: 0 1em 2em;
+  - __bad:__ padding-top: 0; padding-right: 1em; padding-bottom: 2em; padding-left: 1em;
+  - __good:__ padding: 0 1em 2em;
 - Omit unit specification after “0” values.
-  - _bad:_ margin: 0px;
-  - _good:_ margin: 0;
+  - __bad:__ margin: 0px;
+  - __good:__ margin: 0;
 - Use 3 character hexadecimal notation where possible.
-  - _bad:_ color: #ff0099;
-  - _good:_ color: #f09;
+  - __bad:__ color: #ff0099;
+  - __good:__ color: #f09;
 - Use number keywords (100–900) for font-weight.
-  - _bad:_ font-weight: normal;
-  - _good:_ font-weight: 400;
+  - __bad:__ font-weight: normal;
+  - __good:__ font-weight: 400;
 - Separate words in class names by a hyphen.
-  - _bad:_ .user_avatar, .userAvatar, .useravatar
-  - _good:_ .user-avatar
+  - __bad:__ .user_avatar, .userAvatar, .useravatar
+  - __good:__ .user-avatar
 - Dont't use !important, it's ok to use it on helper classes though.
 - Dont't use conditional stylesheets, use the html-class (e.g. .lt-ie9) instead to style directly in your block.
 - Maximum Nesting: three levels deep
@@ -164,8 +165,14 @@ If you're asking yourself »Why not …?« have a look at my WHYNOT.md file. The
 
 ## TODO
 
-- do we use compass at all?
+- do we use/need compass at all?
 - extra step for build folder, to add all new files to svn and remove all removed files from svn (without svn rm)
 - what about JS: how do we include it? bower?
 - give _dist_ some love
-- extending coding guidelines
+- give styleguide-template some default styling
+- add example btn-class with extends
+- extend css coding guidelines
+- include sass coding guidelines
+- add a task for [combining media-queries](https://github.com/buildingblocks/grunt-combine-media-queries)
+- add a task for measuring [frontend-performance](https://github.com/stefanjudis/grunt-phantomas)
+- add a task for taking [screenshots](https://github.com/stefanjudis/grunt-photobox)

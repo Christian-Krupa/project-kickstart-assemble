@@ -40,9 +40,11 @@ module.exports = function(grunt) {
 		autoprefixer: {
 			options: {
 				browsers: ['last 2 version', 'ie 8', 'ie 9'],
-				map: true
 			},
 			dev: {
+				options: {
+					map: true
+				},
 				src: 'build/css/*.css'
 			},
 			dist: {
@@ -81,45 +83,31 @@ module.exports = function(grunt) {
 		// Configuration for compass
 		compass: {
 			options: {
+				debugInfo: false,
+				imagesDir: 'source/img',
 				raw: [
-					'# Require any additional compass plugins here.',
-					'require "sass-globbing"',
-					'',
-					'# Set this to the root of your project when deployed:',
 					'http_path = "/"',
-					'css_dir = "build/css"',
-					'javascripts_dir = "build/js"',
-					'sass_dir = "source/sass"',
-					'images_dir = "source/img"',
-					'',
-					'# You can select your preferred output style here (can be overridden via the command line):',
-					'# output_style = :expanded or :nested or :compact or :compressed',
-					'',
-					'# To enable relative paths to assets via compass helper functions. Uncomment:',
-					'# relative_assets = true',
-					'',
-					'# To disable debugging comments that display the original location of your selectors. Uncomment:',
-					'line_comments = true',
 					'Sass::Script::Number.precision = 8',
-					'',
-					'# If you prefer the indented syntax, you might want to regenerate this',
-					'# project again passing --syntax sass, or you can uncomment this:',
-					'# preferred_syntax = :sass',
-					'# and then run:',
-					'# sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass',
-					'',
-					'# Sass Options',
 					'sass_options = {',
-					'  :debug_info => false,',
 					'  :read_cache => true,',
-					'  :sourcemap => true', // this set to 'true' has no effect, if you aren't using sass >= 3.3
 					'}'
-				].join("\n")
+				].join("\n"),
+				require: ['sass-globbing'],
+				sassDir: 'source/sass'
 			},
 			dev: {
 				options: {
+					cssDir: 'build/css',
 					environment: 'development',
+					force: true,
+					javascriptsDir: 'build/js',
+					noLineComments: false,
 					outputStyle: 'expanded',
+					raw: [
+						'sass_options = {',
+						'  :sourcemap => true', // this set to 'true' has no effect, if you aren't using sass >= 3.3
+						'}'
+					].join("\n"),
 					sourcemap: true // this set to 'true' has no effect, if you aren't using sass >= 3.3
 				}
 			},
@@ -128,7 +116,10 @@ module.exports = function(grunt) {
 					cssDir: 'dist/css',
 					environment: 'production',
 					force: true,
-					outputStyle: 'compressed'
+					javascriptsDir: 'dist/js',
+					noLineComments: true,
+					outputStyle: 'compressed',
+					sourcemap: false
 				}
 			}
 		},
@@ -171,25 +162,18 @@ module.exports = function(grunt) {
 		grunticon: {
 			options: {
 				cssprefix: '%icon-',
-				datapngcss: 'icons.data.png.scss',
-				datasvgcss: 'icons.data.svg.scss',
-				urlpngcss: 'icons.fallback.scss'
+				datapngcss: '_icons-data-png.scss',
+				datasvgcss: '_icons-data-svg.scss',
+				loadersnippet: 'grunticon-loader.js',
+				pngfolder: '../../img/icons/png-fallback',
+				previewhtml: 'preview.html',
+				urlpngcss: '_icons-fallback.scss'
 			},
-			dev: {
+			all: {
 				files: [
 					{
-						cwd: 'build/img/icons/svgmin',
-						dest: 'build/img/icons',
-						expand: true,
-						src: ['*.svg']
-					}
-				]
-			},
-			dist: {
-				files: [
-					{
-						cwd: 'dist/img/icons/svgmin',
-						dest: 'dist/img/icons',
+						cwd: 'source/img/icons/svgmin',
+						dest: 'source/sass/grunticon',
 						expand: true,
 						src: ['*.svg']
 					}
@@ -312,6 +296,43 @@ module.exports = function(grunt) {
 			}
 		},
 		
+		// Configuration for packager
+		'string-replace': {
+			datasvg: {
+				files: {
+					'source/sass/icons/_icons-data-svg.scss': 'source/sass/grunticon/_icons-data-svg.scss'
+				},
+				options: {
+					replacements: [{
+						pattern: /^%icon-/g,
+						replacement: '%icon-data-svg-'
+					}]
+				}
+			},
+			datapng: {
+				files: {
+					'source/sass/icons/_icons-data-png.scss': 'source/sass/grunticon/_icons-data-png.scss'
+				},
+				options: {
+					replacements: [{
+						pattern: /^%icon-/g,
+						replacement: '%icon-data-png-'
+					}]
+				}
+			},
+			fallback: {
+				files: {
+					'source/sass/icons/_icons-fallback.scss': 'source/sass/grunticon/_icons-fallback.scss'
+				},
+				options: {
+					replacements: [{
+						pattern: /^%icon-/g,
+						replacement: '%icon-fallback-'
+					}]
+				}
+			}
+		},
+		
 		// Configuration for the styleguide output
 		styleguide: {
 			options: {
@@ -334,25 +355,14 @@ module.exports = function(grunt) {
 		
 		// Configuration for optimizing SVG-files
 		svgmin: {
-			dev: {
+			all: {
 				files: [
 					{
 						cwd: 'source/img/icons',
-						dest: 'build/img/icons/svgmin',
+						dest: 'source/img/icons/svgmin',
 						expand: true,
 						ext: '.svg',
-						src: ['**/*.svg']
-					}
-				]
-			},
-			dist: {
-				files: [
-					{
-						cwd: 'source/img/icons',
-						dest: 'dist/img/icons/svgmin',
-						expand: true,
-						ext: '.svg',
-						src: ['**/*.svg']
+						src: ['*.svg']
 					}
 				]
 			}
@@ -445,6 +455,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-packager');
+	grunt.loadNpmTasks('grunt-string-replace');
 	grunt.loadNpmTasks('grunt-styleguide');
 	grunt.loadNpmTasks('grunt-svgmin');
 	grunt.loadNpmTasks('grunt-sync');
@@ -459,12 +470,13 @@ module.exports = function(grunt) {
 	// Build task
 	grunt.registerTask('build', [
 		'clean:dev',
+		'svgmin',
+		'grunticon',
+		'string-replace',
+		'imagemin:dev',
 		'compass:dev',
 		'autoprefixer:dev',
 		'packager',
-		'svgmin:dev',
-		'grunticon:dev',
-		'imagemin:dev',
 		'sync',
 		'newer:assemble:dev',
 		'htmlhint',
@@ -476,12 +488,13 @@ module.exports = function(grunt) {
 	// Distributing task
 	grunt.registerTask('dist', [
 		'clean:dist',
+		'svgmin',
+		'grunticon',
+		'string-replace',
+		'imagemin:dist',
 		'compass:dist',
 		'autoprefixer:dist',
 		'packager',
-		'svgmin:dist',
-		'grunticon:dist',
-		'imagemin:dist',
 		'sync',
 		'assemble:dist',
 		'htmlhint',
