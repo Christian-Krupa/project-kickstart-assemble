@@ -80,6 +80,18 @@ module.exports = function(grunt) {
 			}
 		},
 		
+		// Configuration for combining media-queries
+		cmq: {
+			options: {
+				log: false
+			},
+			dist: {
+				files: {
+					'dist/css/styles.css': ['dist/css/styles.css']
+				}
+			}
+		},
+		
 		// Configuration for compass
 		compass: {
 			options: {
@@ -149,12 +161,40 @@ module.exports = function(grunt) {
 		
 		// Configuration for copying files
 		copy: {
+			ajax: {
+				cwd: 'source/ajax-content/',
+				dest: 'dist/ajax-content/',
+				expand: true,
+				src: ['**/*']
+			},
+			fonts: {
+				cwd: 'source/fonts/',
+				dest: 'dist/fonts/',
+				expand: true,
+				src: ['**/*']
+			},
+			js: {
+				cwd: 'source/js/',
+				dest: 'dist/js/',
+				expand: true,
+				src: ['**/*']
+			},
 			styleguide: {
+				cwd: 'build/css/',
 				dest: 'dist/styleguide/css/',
 				expand: true,
 				filter: 'isFile',
 				flatten: true,
-				src: ['build/css/**/*.css']
+				src: ['**/*.css']
+			}
+		},
+		
+		// Configuration for minifying css-files
+		cssmin: {
+			dist: {
+				files: {
+					'dist/css/styles.css': ['dist/css/styles.css']
+				}
 			}
 		},
 		
@@ -291,12 +331,14 @@ module.exports = function(grunt) {
 			default: {
 				options: {
 					config: 'source/js/project.jspackcfg',
-					cwd: 'source/js/'
+					cwd: 'source/js/',
+					dest: 'source/js/',
+					src: ['**/*']
 				}
 			}
 		},
 		
-		// Configuration for packager
+		// Configuration for string-replacing the grunticon output
 		'string-replace': {
 			datasvg: {
 				files: {
@@ -369,7 +411,7 @@ module.exports = function(grunt) {
 		},
 		
 		// Configuration for syncing files
-		// Task does not remove any files and directories in 'dest' that are no longer in 'src'. :'(
+		// Task does not remove any files and directories in 'dest' that are no longer in 'cwd'. :'(
 		sync: {
 			ajax: {
 				files: [
@@ -444,10 +486,12 @@ module.exports = function(grunt) {
 	// Where we tell Grunt we plan to use this plug-in.
 	grunt.loadNpmTasks('assemble');
 	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks('grunt-combine-media-queries');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
@@ -494,13 +538,17 @@ module.exports = function(grunt) {
 		'imagemin:dist',
 		'compass:dist',
 		'autoprefixer:dist',
+		'cmq',
+		'cssmin',
 		'packager',
-		'sync',
+		'copy:ajax',
+		'copy:fonts',
+		'copy:js',
 		'assemble:dist',
 		'htmlhint',
 		'jshint',
 		'styleguide',
-		'copy'
+		'copy:styleguide'
 	]);
 	
 	// HTMLHint task

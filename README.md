@@ -46,10 +46,12 @@ Or use `npm install` if your are on Windows (you have to check the requirements 
 - [assemble](https://github.com/assemble/assemble)
 - [connect-livereload](https://github.com/intesso/connect-livereload)
 - [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer)
+- [grunt-combine-media-queries](https://github.com/buildingblocks/grunt-combine-media-queries)
 - [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean)
 - [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass)
 - [grunt-contrib-connect](https://github.com/gruntjs/grunt-contrib-connect)
 - [grunt-contrib-copy](https://github.com/gruntjs/grunt-contrib-copy)
+- [grunt-contrib-cssmin](https://github.com/gruntjs/grunt-contrib-cssmin)
 - [grunt-contrib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)
 - [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)
 - [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
@@ -173,6 +175,5 @@ If you're asking yourself »Why not …?« have a look at my WHYNOT.md file. The
 - add example btn-class with extends
 - extend css coding guidelines
 - include sass coding guidelines
-- add a task for [combining media-queries](https://github.com/buildingblocks/grunt-combine-media-queries)
 - add a task for measuring [frontend-performance](https://github.com/stefanjudis/grunt-phantomas)
 - add a task for taking [screenshots](https://github.com/stefanjudis/grunt-photobox)
