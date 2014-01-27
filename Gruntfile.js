@@ -58,7 +58,7 @@ module.exports = function(grunt) {
 				files: [
 					{
 						filter: 'isFile',
-						src: ['build/**/*', '!build/.svn/**', '!build/**/.svn/**']
+						src: ['build/**/*', '!build/.svn/**', '!build/**/.svn/**', '!build/photobox/**/*']
 					}
 				]
 			},
@@ -328,12 +328,23 @@ module.exports = function(grunt) {
 		
 		// Configuration for packager
 		packager: {
-			default: {
+			all: {
 				options: {
 					config: 'source/js/project.jspackcfg',
 					cwd: 'source/js/',
 					dest: 'source/js/',
 					src: ['**/*']
+				}
+			}
+		},
+		
+		// Configuration for photobox
+		photobox: {
+			all: {
+				options: {
+					indexPath: 'build/photobox/',
+					screenSizes: [ '320', '568', '768', '1024', '1280' ],
+					urls: [ 'http://0.0.0.0:9002/index.html' ]
 				}
 			}
 		},
@@ -499,6 +510,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-packager');
+	grunt.loadNpmTasks('grunt-photobox');
 	grunt.loadNpmTasks('grunt-string-replace');
 	grunt.loadNpmTasks('grunt-styleguide');
 	grunt.loadNpmTasks('grunt-svgmin');
@@ -561,10 +573,16 @@ module.exports = function(grunt) {
 		'jshint'
 	]);
 	
+	// Photobox task
+	grunt.registerTask('take-screenshots', [
+		'connect:livereload',
+		'photobox'
+	]);
+	
 	// Styleguide task
 	grunt.registerTask('build-styleguide', [
 		'styleguide',
-		'copy'
+		'copy:styleguide'
 	]);
 	
 };

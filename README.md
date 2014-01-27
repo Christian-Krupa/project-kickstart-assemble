@@ -58,6 +58,7 @@ Or use `npm install` if your are on Windows (you have to check the requirements 
 - [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint)
 - [grunt-newer](https://github.com/tschaub/grunt-newer)
 - [grunt-packager](https://github.com/bobbor/grunt-packager)
+- [grunt-photobox](https://github.com/stefanjudis/grunt-photobox)
 - [grunt-string-replace](https://github.com/erickrdch/grunt-string-replace)
 - [grunt-styleguide](https://github.com/indieisaconcept/grunt-styleguide)
 - [grunt-svgmin](https://github.com/sindresorhus/grunt-svgmin)
@@ -160,9 +161,14 @@ Proposal:
 - Maximum Nesting: three levels deep
   
 
-### Questions?
+## Questions?
 
 If you're asking yourself »Why not …?« have a look at my WHYNOT.md file. There I might answer some common questions. :)
+
+
+## License
+
+[MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
 
 ## TODO
@@ -176,4 +182,3 @@ If you're asking yourself »Why not …?« have a look at my WHYNOT.md file. The
 - extend css coding guidelines
 - include sass coding guidelines
 - add a task for measuring [frontend-performance](https://github.com/stefanjudis/grunt-phantomas)
-- add a task for taking [screenshots](https://github.com/stefanjudis/grunt-photobox)
