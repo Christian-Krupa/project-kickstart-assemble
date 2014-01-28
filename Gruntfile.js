@@ -338,6 +338,17 @@ module.exports = function(grunt) {
 			}
 		},
 		
+		// Configuration for measuring frontend performance
+		phantomas: {
+			all : {
+				options : {
+					indexPath: 'build/phantomas/',
+					numberOfRuns: 10,
+					url: 'http://0.0.0.0:9002/'
+				}
+			}
+		},
+		
 		// Configuration for photobox
 		photobox: {
 			all: {
@@ -510,6 +521,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-packager');
+	grunt.loadNpmTasks('grunt-phantomas');
 	grunt.loadNpmTasks('grunt-photobox');
 	grunt.loadNpmTasks('grunt-string-replace');
 	grunt.loadNpmTasks('grunt-styleguide');
@@ -571,6 +583,12 @@ module.exports = function(grunt) {
 	// JSHint task
 	grunt.registerTask('check-js', [
 		'jshint'
+	]);
+	
+	// Phantomas task
+	grunt.registerTask('measure-performance', [
+		'connect:livereload',
+		'phantomas'
 	]);
 	
 	// Photobox task
