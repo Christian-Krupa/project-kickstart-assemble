@@ -173,7 +173,6 @@ If you're asking yourself »Why not …?« have a look at my WHYNOT.md file. The
 
 ## TODO
 
-- do we use/need compass at all?
 - extra step for build folder, to add all new files to svn and remove all removed files from svn (without svn rm)
 - what about JS: how do we include it? bower?
 - give _dist_ some love

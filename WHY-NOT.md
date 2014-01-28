@@ -40,3 +40,9 @@ CSS
 If we set color for `.header` now, we would have to reset it on `.b-article .header`.
 
 Don't even think about abusing `.header[role=banner]` as excuse! Count: 1 (increment if you tried!). ;)
+
+
+## Why Do you use Compass, do we need it at all?
+
+At the moment I use Compass because of the feature to require SASS Globbing. If I could, I would use [grunt-sass](https://github.com/sindresorhus/grunt-sass) which ist based on [libsass](https://github.com/hcatlin/libsass) to get an immense performance boost in compiling SCSS to CSS. I hope the devs out there will implement a better partial-inclusion soon. Another issue: libsass won't properly compile @extends. :(
+ 
