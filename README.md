@@ -101,13 +101,13 @@ File `_menu.scss` in `source/sass/blocks` directory.
 SCSS
 
 .b-menu { /* block: 'b-menu' */
-    &.is-static { /* modifier: 'is-static' for b-menu  */
-    }
-    
-    .item { /* element: 'item' in b-menu */
-        a { /* element: 'item a' in b-menu */
-        }
-    }
+	&.is-static { /* modifier: 'is-static' for b-menu  */
+	}
+	
+	.item { /* element: 'item' in b-menu */
+		a { /* element: 'item a' in b-menu */
+		}
+	}
 }
 ```
 
@@ -124,6 +124,24 @@ Proposal:
 * b-page-main,
 * b-page-aside,
 * b-page-footer
+
+
+### Coding Style
+
+(This list is not intended to be exhaustive.)
+
+- Use lowercase for class names, selectors and HTML elements.
+- Be consistant with indentation – I'm using tabs instead of spaces.
+- Be consistent in declaration order, cluster related properties (Positioning, Box-Model, Text & Color). I'm no fan of an alphabetical order.
+- Be consistant with quotes – I'm using double quotes ```""```.
+- Quote attribute values in selectors, e.g. ```input[type="checkbox"]```.
+- One selector per line, one rule per line.
+- Put spaces after ```:``` in property declarations.
+- Put spaces before ```{``` in rule declarations.
+- Put a ```;``` at the end of the last declaration in a declaration block.
+- Include a space after each comma in comma-separated property or function values, e.g. ```rgba(0, 0, 0, 0)```.
+- Separate each ruleset by a blank line.
+- Document styles with [KSS](https://github.com/kneath/kss).
 
 
 ### CSS Coding Guidelines
@@ -148,6 +166,9 @@ Proposal:
 - Omit unit specification after “0” values.
   - __bad:__ margin: 0px;
   - __good:__ margin: 0;
+- Use hexadecimal color codes #000 unless using rgba.
+  - __bad:__ color: orange;
+  - __good:__ color: #ffa500;
 - Use 3 character hexadecimal notation where possible.
   - __bad:__ color: #ff0099;
   - __good:__ color: #f09;
@@ -159,8 +180,71 @@ Proposal:
   - __good:__ .user-avatar
 - Dont't use !important, it's ok to use it on helper classes though.
 - Dont't use conditional stylesheets, use the html-class (e.g. .lt-ie9) instead to style directly in your block.
-- Maximum Nesting: three levels deep
-  
+
+
+### SASS Coding Guidelines
+
+(This list is not intended to be exhaustive.)
+
+I'm using SCSS-syntax because it's valid CSS and more expressive in my eyes.
+
+__List @extend first__
+
+```
+.b-foo {
+	@extend %module; 
+	…
+}
+```
+
+__List regular styles next__
+
+```
+.b-foo {
+	@extend %module; 
+	margin: 0 auto;
+	…
+}
+```
+
+__List @include depending on the property you are referencing__
+
+```
+.b-foo {
+	@extend %module; 
+	margin: 0 auto;
+	@include rem(padding, 10px);
+	color: #000;
+}
+```
+
+__List nested selectors last__
+
+```
+.b-foo {
+	@extend %module;
+	margin: 0 auto;
+	@include rem(padding, 10px);
+	color: #000;
+	
+	> .bar {
+		padding: 0 10px 5px;
+	}
+}
+```
+
+__Maximum Nesting: three levels deep__
+
+```
+.b-foo {
+	.bar {
+		.baz {
+			// no more!
+		}
+	}
+}
+```
+
 
 ## Questions?
 
@@ -179,5 +263,4 @@ If you're asking yourself »Why not …?« have a look at my WHYNOT.md file. The
 - give _dist_ some love
 - give styleguide-template some default styling
 - add example btn-class with extends
-- extend css coding guidelines
-- include sass coding guidelines
+- extend css/sass coding guidelines
