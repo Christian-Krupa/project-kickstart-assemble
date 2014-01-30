@@ -167,6 +167,12 @@ module.exports = function(grunt) {
 				expand: true,
 				src: ['**/*']
 			},
+			favicon: {
+				cwd: 'source/img/',
+				dest: 'dist/img/',
+				expand: true,
+				src: ['**/*.ico']
+			},
 			fonts: {
 				cwd: 'source/fonts/',
 				dest: 'dist/fonts/',
@@ -441,6 +447,15 @@ module.exports = function(grunt) {
 						cwd: 'source/ajax-content/',
 						dest: 'build/ajax-content/',
 						src: '**/*'
+					}
+				]
+			},
+			favicon: {
+				files: [
+					{
+						cwd: 'source/img/',
+						dest: 'build/img/',
+						src: '**/*.ico'
 					}
 				]
 			},

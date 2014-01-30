@@ -45,6 +45,7 @@ Or use `npm install` if your are on Windows (you have to check the requirements 
 
 - [assemble](https://github.com/assemble/assemble)
 - [connect-livereload](https://github.com/intesso/connect-livereload)
+- [grunt](https://github.com/gruntjs/grunt)
 - [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer)
 - [grunt-combine-media-queries](https://github.com/buildingblocks/grunt-combine-media-queries)
 - [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean)
@@ -133,13 +134,13 @@ Proposal:
 - Use lowercase for class names, selectors and HTML elements.
 - Be consistant with indentation – I'm using tabs instead of spaces.
 - Be consistent in declaration order, cluster related properties (Positioning, Box-Model, Text & Color). I'm no fan of an alphabetical order.
-- Be consistant with quotes – I'm using double quotes ```""```.
-- Quote attribute values in selectors, e.g. ```input[type="checkbox"]```.
+- Be consistant with quotes – I'm using double quotes `""`.
+- Quote attribute values in selectors, e.g. `input[type="checkbox"]`.
 - One selector per line, one rule per line.
-- Put spaces after ```:``` in property declarations.
-- Put spaces before ```{``` in rule declarations.
-- Put a ```;``` at the end of the last declaration in a declaration block.
-- Include a space after each comma in comma-separated property or function values, e.g. ```rgba(0, 0, 0, 0)```.
+- Put spaces after `:` in property declarations.
+- Put spaces before `{` in rule declarations.
+- Put a `;` at the end of the last declaration in a declaration block.
+- Include a space after each comma in comma-separated property or function values, e.g. `rgba(0, 0, 0, 0)`.
 - Separate each ruleset by a blank line.
 - Document styles with [KSS](https://github.com/kneath/kss).
 
@@ -248,7 +249,7 @@ __Maximum Nesting: three levels deep__
 
 ## Questions?
 
-If you're asking yourself »Why not …?« have a look at my WHYNOT.md file. There I might answer some common questions. :)
+If you're asking yourself »Why not …?« have a look at my [WHYNOT.md](https://github.com/rastersysteme/project-kickstart-assemble/blob/master/WHY-NOT.md) file. There I might answer some common questions. :)
 
 
 ## License
