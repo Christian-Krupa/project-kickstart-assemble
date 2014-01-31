@@ -41,6 +41,16 @@ Or use `npm install` if your are on Windows (you have to check the requirements 
 3. `grunt dist` – start distribution build script
 
 
+## Grunt Devtools
+
+If you dont't like the command line you can use an alternative called [grunt-devtools](https://github.com/vladikoff/grunt-devtools) for the Chrome browser to start the grunt tasks.
+
+1. Download the [Grunt Devtools extension for Chrome Developer Tools](https://chrome.google.com/webstore/detail/grunt-devtools/fbiodiodggnlakggeeckkjccjhhjndnb?hl=en) from the Chrome Web Store.
+2. Global install via `npm install grunt-devtools -g`.
+3. Run `grunt-devtools` in a directory with a Gruntfile.
+4. Open Chrome Devtools and find the __Grunt tab__. Your grunt tasks should now be accessible from within Chrome.
+
+
 ## Grunt-Plugins used
 
 - [assemble](https://github.com/assemble/assemble)
@@ -260,7 +270,7 @@ If you're asking yourself »Why not …?« have a look at my [WHYNOT.md](https:/
 ## TODO
 
 - extra step for build folder, to add all new files to svn and remove all removed files from svn (without svn rm)
-- what about JS: how do we include it? bower?
+- include JS, perhaps with bower
 - give _dist_ some love
 - give styleguide-template some default styling
 - add example btn-class with extends
