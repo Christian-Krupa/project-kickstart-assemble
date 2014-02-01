@@ -46,7 +46,7 @@ Or use `npm install` if your are on Windows (you have to check the requirements 
 If you dont't like the command line you can use an alternative called [grunt-devtools](https://github.com/vladikoff/grunt-devtools) for the Chrome browser to start the grunt tasks.
 
 1. Download the [Grunt Devtools extension for Chrome Developer Tools](https://chrome.google.com/webstore/detail/grunt-devtools/fbiodiodggnlakggeeckkjccjhhjndnb?hl=en) from the Chrome Web Store.
-2. Global install via `npm install grunt-devtools -g`.
+2. Global install via `npm install -g grunt-devtools`.
 3. Run `grunt-devtools` in a directory with a Gruntfile.
 4. Open Chrome Devtools and find the __Grunt tab__. Your grunt tasks should now be accessible from within Chrome.
 
@@ -76,6 +76,50 @@ If you dont't like the command line you can use an alternative called [grunt-dev
 - [grunt-svgmin](https://github.com/sindresorhus/grunt-svgmin)
 - [grunt-sync](https://github.com/tomusdrw/grunt-sync)
 - [grunticon](https://github.com/filamentgroup/grunticon)
+
+
+## Project structure
+
+My kickstart-setup provides the two main folders `source` and `build`. All source-files will be put to the `source`-folder like templates, fonts, images, js- and sass-files. These files will be processed by several grunt tasks – e.g. compass: sass -> css – and then stored in the `build`-folder. From there you can view the generated html-files in the browser.
+
+```
+$ tree -d -I node_modules
+.
+├── build
+│   ├── ajax-content
+│   ├── css
+│   ├── fonts
+│   ├── img
+│   │   ├── bgs
+│   │   ├── icons
+│   │   │   └── png-fallback
+│   │   └── temp
+│   └── js
+└── source
+    ├── ajax-content
+    ├── assemble
+    │   ├── data
+    │   ├── helpers
+    │   ├── layouts
+    │   ├── pages
+    │   └── partials
+    ├── fonts
+    ├── img
+    │   ├── bgs
+    │   ├── dev
+    │   ├── icons
+    │   │   ├── png-fallback
+    │   │   └── svgmin
+    │   └── temp
+    ├── js
+    ├── sass
+    │   ├── blocks
+    │   ├── grunticon
+    │   ├── icons
+    │   └── mixins
+    └── styleguide-template
+        └── public
+```
 
 
 ## CSS Rules
@@ -109,35 +153,96 @@ Blocks and elements may be modified with **modifiers**. For instance the selecte
 File `_menu.scss` in `source/sass/blocks` directory.
 
 ```
-SCSS
-
 .b-menu { /* block: 'b-menu' */
 	&.is-static { /* modifier: 'is-static' for b-menu  */
+		…
 	}
 	
 	.item { /* element: 'item' in b-menu */
 		a { /* element: 'item a' in b-menu */
+			…
 		}
 	}
 }
 ```
 
 
-### Separating page layout blocks from real blocks
+### Class-Naming
 
-Because you want to know if the block is for page layout or for a single component.
+Because you want to know if the block is for page layout or for a single component, I separate page layout blocks from component blocks.
 
-Proposal:
+Page Layout Blocks:
 
-* b-page,
-* b-page-header,
-* b-page-nav,
-* b-page-main,
-* b-page-aside,
-* b-page-footer
+- b-page
+- b-page-header
+- b-page-nav
+- b-page-mai,
+- b-page-aside
+- b-page-footer
+
+Component Blocks:
+
+- b-eventlist
+- b-linklist
+- b-sitemap
+- b-teaser-text
+- b-teaser-video
+- …
 
 
-### Coding Style
+## SASS structure
+
+There are two main SCSS-files `styles.scss` and `universal.scss`.
+
+The `styles.scss` imports all partials. `mixins`, `icons` and `blocks` will be imported with a globbing-pattern. It's important that _every block-component_ gets its own partial and is put into the `blocks`-folder!  
+
+The `universal.scss` is a universal fallback stylesheet for older IE browsers mady by [Andy Clarke](http://code.google.com/p/universal-ie6-css/).
+
+This is how the `sass`-folder looks like:
+
+```
+$ tree .
+.
+├── _basics.scss
+├── _global-extends.scss
+├── _global-variables.scss
+├── _reset.scss
+├── _webfonts.scss
+├── blocks
+│   ├── _page-aside.scss
+│   ├── _page-footer.scss
+│   ├── _page-header.scss
+│   ├── _page-nav.scss
+│   └── …
+├── grunticon
+├── icons
+│   ├── _icons-data-png.scss
+│   ├── _icons-data-svg.scss
+│   └── _icons-fallback.scss
+├── mixins
+│   ├── _grunticon.scss
+│   ├── _px-to-rem.scss
+│   ├── _respond-to.scss
+│   ├── _triangle.scss
+│   └── …
+├── styles.scss
+└── universal.scss
+```
+
+Some explanation:
+
+- __basics.scss__ – basic styles, some normalizing
+- __global-extends.scss__ – write your global mixins in here, e.g. `clearfix`, `hide-text` etc.
+- __global-variables__ – write your global variables in here, e.g. typography, colors etc.
+- __reset.scss__ – global browser reset by [Eric Meyer](http://meyerweb.com/eric/tools/css/reset/)
+- __webfonts.scss__ – use it for `@font-face`-declarations
+- __blocks/__ – all block-component-partials go in here
+- __grunticon/__ – output by the grunticon-task, files will be processed by the string-replace-task afterwards
+- __icons/__ – output by the string-replace-task, you can use the grunticon-mixin to include the `%icons`
+- __mixins/__ – all mixins go in here
+
+
+## Coding Style
 
 (This list is not intended to be exhaustive.)
 
@@ -269,9 +374,8 @@ If you're asking yourself »Why not …?« have a look at my [WHYNOT.md](https:/
 
 ## TODO
 
-- extra step for build folder, to add all new files to svn and remove all removed files from svn (without svn rm)
 - include JS, perhaps with bower
 - give _dist_ some love
 - give styleguide-template some default styling
-- add example btn-class with extends
-- extend css/sass coding guidelines
+- add some example files, e.g. btn-class with extends
+- build folder: to add all new files to svn and remove all removed files from svn (without svn rm)
