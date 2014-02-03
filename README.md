@@ -71,6 +71,7 @@ If you dont't like the command line you can use an alternative called [grunt-dev
 - [grunt-packager](https://github.com/bobbor/grunt-packager)
 - [grunt-phantomas](https://github.com/stefanjudis/grunt-phantomas)
 - [grunt-photobox](https://github.com/stefanjudis/grunt-photobox)
+- [grunt-prettify](https://github.com/jonschlinkert/grunt-prettify)
 - [grunt-string-replace](https://github.com/erickrdch/grunt-string-replace)
 - [grunt-styleguide](https://github.com/indieisaconcept/grunt-styleguide)
 - [grunt-svgmin](https://github.com/sindresorhus/grunt-svgmin)
@@ -114,9 +115,11 @@ $ tree -d -I node_modules
     ├── js
     ├── sass
     │   ├── blocks
+    │   ├── extends
     │   ├── grunticon
     │   ├── icons
-    │   └── mixins
+    │   ├── mixins
+    │   └── variables
     └── styleguide-template
         └── public
 ```
@@ -204,8 +207,6 @@ This is how the `sass`-folder looks like:
 $ tree .
 .
 ├── _basics.scss
-├── _global-extends.scss
-├── _global-variables.scss
 ├── _reset.scss
 ├── _webfonts.scss
 ├── blocks
@@ -213,6 +214,13 @@ $ tree .
 │   ├── _page-footer.scss
 │   ├── _page-header.scss
 │   ├── _page-nav.scss
+│   └── …
+├── extends
+│   ├── _a11y.scss
+│   ├── _cf.scss
+│   ├── _ellipsis.scss
+│   ├── _hide-text.scss
+│   ├── _ib.scss
 │   └── …
 ├── grunticon
 ├── icons
@@ -225,6 +233,10 @@ $ tree .
 │   ├── _respond-to.scss
 │   ├── _triangle.scss
 │   └── …
+├── variables
+│   ├── _color.scss
+│   ├── _typography.scss
+│   └── …
 ├── styles.scss
 └── universal.scss
 ```
@@ -232,14 +244,14 @@ $ tree .
 Some explanation:
 
 - __basics.scss__ – basic styles, some normalizing
-- __global-extends.scss__ – write your global mixins in here, e.g. `clearfix`, `hide-text` etc.
-- __global-variables__ – write your global variables in here, e.g. typography, colors etc.
 - __reset.scss__ – global browser reset by [Eric Meyer](http://meyerweb.com/eric/tools/css/reset/)
 - __webfonts.scss__ – use it for `@font-face`-declarations
 - __blocks/__ – all block-component-partials go in here
+- __extends/__ – put your placeholder-extends in here, e.g. `a11y`, `cf`, `hide-text` etc.
 - __grunticon/__ – output by the grunticon-task, files will be processed by the string-replace-task afterwards
 - __icons/__ – output by the string-replace-task, you can use the grunticon-mixin to include the `%icons`
-- __mixins/__ – all mixins go in here
+- __mixins/__ – put your mixins in here, e.g. `px-to-rem`, `respond-to` etc.
+- __variables/__ – put your variables in here, e.g. `color`, `typography` etc.
 
 
 ## Coding Style

@@ -13,8 +13,8 @@
 // Extends
 @import "extends/**/*";
 
-// Variablen
-@import "global-variables";
+// Variables
+@import "variables/**/*";
 
 // Webfonts
 @import "webfonts";
@@ -22,11 +22,11 @@
 // Browser-Reset
 @import "reset";
 
-// Basisformatierungen
+// Basic Formatting
 @import "basics";
 
 // Icons
 @import "icons/**/*";
 
-// alle Module/Komponenten
+// All Components
 @import "blocks/**/*";

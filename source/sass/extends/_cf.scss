@@ -1,11 +1,13 @@
-// clearfix
+// Micro clearfix
+
 %cf {
-  &:before,
-  &:after {
-    display: table;
-    content: " ";
-  }
-  &:after {
-    clear: both;
-  }
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+	}
+	
+	&:after {
+		clear: both;
+	}
 }

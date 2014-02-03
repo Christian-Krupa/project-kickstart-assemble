@@ -1,13 +1,13 @@
-// display: inline-block - parent
+// Use display: inline-block; as a float-alternative
+
 %ib-parent {
-  display: table;
-  width: 100%;
-  word-spacing: -1em;
+	display: table;
+	width: 100%;
+	word-spacing: -1em;
 }
 
-// display: inline-block - child
 %ib-child {
-  display: inline-block;
-  vertical-align: top;
-  word-spacing: 0;
+	display: inline-block;
+	vertical-align: top;
+	word-spacing: 0;
 }
