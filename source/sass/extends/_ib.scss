@@ -1,0 +1,13 @@
+// display: inline-block - parent
+%ib-parent {
+  display: table;
+  width: 100%;
+  word-spacing: -1em;
+}
+
+// display: inline-block - child
+%ib-child {
+  display: inline-block;
+  vertical-align: top;
+  word-spacing: 0;
+}
