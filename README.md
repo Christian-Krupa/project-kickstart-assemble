@@ -125,16 +125,53 @@ $ tree -d -I node_modules
 ```
 
 
+## HTML Rules
+
+__HTML5__ is preferred for all HTML documents, so I'm using:
+
+__HTML5 Elements__
+
+sectioning: `<header>, <footer>, <nav>, <aside>, <article>, <section>` …  
+grouping: `<main>, <figure>, <figcaption>` …  
+text-level semantic: `<mark>, <time>` …  
+multimedia: `<video>, <audio>` …
+
+__HTML5 Forms__
+
+types: `date, email, number, range, search, tel, url` …  
+elements: `datalist, progress, output` …  
+attributes: `pattern, placeholder, required` …
+
+To achieve a constant form-behaviour across all A-graded browsers, I can recommend [Webshims Lib](https://github.com/aFarkas/webshim), a modular capability-based polyfill-loading library.
+
+
+## HTML Coding Style
+
+(This list is not intended to be exhaustive.)
+
+- __Document Type:__ Use the HTML5 doctype `<!DOCTYPE html>`.
+- __Encoding:__: Use UTF-8 `<meta charset="utf-8">`
+- __Validity:__ The HTML-code should be valid where possible. You can test it with the [W3C HTML validator](http://validator.w3.org/nu/).
+- __Semantics:__ Use HTML according to its purpose. For example, use heading elements `h1–h6` for headings, `p` elements for paragraphs, `a` elements for anchors etc. Tables shouldn't be used for page layout. Also try to avoid DIVitis.
+- __Separation of Concerns:__ Separate structure from presentation from behavior.
+- __Type Attributes:__ Omit type attributes for style sheets and scripts.
+- __General Formatting:__ Use a new line for every block, list, or table element and indent every such child element. I'm using tabs instead of spaces.
+- __Quoting:__ When quoting attributes values, use double quotation marks `" "`.
+- __Label/Input:__ Every form input should utilize a `label` with a `for`-attribute..
+- __Tables:__ Make use of `<thead>, <tfoot>, <tbody>, <th>`.
+- __Human readable:__ Code is written and maintained by people. Ensure your code is descriptive, well commented, and approachable by others!
+
+
 ## CSS Rules
 
 I'm using some variation of BEM+SMACSS+optionatedexperienceofcssdevelopmentyears:
 
-My site exists of basic **blocks**. Blocks are independent parts of the site (e.g. menu, metanav, login form, sidebar, user detail page). Like explained at [yandex's BEM](http://img-fotki.yandex.ru/get/5008/221798411.0/0_babce_7deef28f_XXL.png).
+My site exists of basic __blocks__. Blocks are independent parts of the site (e.g. menu, metanav, login form, sidebar, user detail page). Like explained at [yandex's BEM](http://img-fotki.yandex.ru/get/5008/221798411.0/0_babce_7deef28f_XXL.png).
 The blocks may contain other blocks.
 
-The smallest entities of a block are called **elements**. For instance the block 'menu' contains multiple items, a login block may contain a username element, password element and a submit button element. Like explained at [yandex's BEM](http://img-fotki.yandex.ru/get/6726/221798411.0/0_babd1_f14000fa_XL.png).
+The smallest entities of a block are called __elements__. For instance the block 'menu' contains multiple items, a login block may contain a username element, password element and a submit button element. Like explained at [yandex's BEM](http://img-fotki.yandex.ru/get/6726/221798411.0/0_babd1_f14000fa_XL.png).
 
-Blocks and elements may be modified with **modifiers**. For instance the selected menu item is a modified version of the menu item.
+Blocks and elements may be modified with __modifiers__. For instance the selected menu item is a modified version of the menu item.
 
 - Blocks
   - are prefixed with _b-_
@@ -254,11 +291,11 @@ Some explanation:
 - __variables/__ – put your variables in here, e.g. `color`, `typography` etc.
 
 
-## Coding Style
+## CSS Coding Style
 
 (This list is not intended to be exhaustive.)
 
-- Use lowercase for class names, selectors and HTML elements.
+- Use lowercase for class names.
 - Be consistant with indentation – I'm using tabs instead of spaces.
 - Be consistent in declaration order, cluster related properties (Positioning, Box-Model, Text & Color). I'm no fan of an alphabetical order.
 - Be consistant with quotes – I'm using double quotes `""`.
@@ -272,7 +309,7 @@ Some explanation:
 - Document styles with [KSS](https://github.com/kneath/kss).
 
 
-### CSS Coding Guidelines
+## CSS Coding Guidelines
 
 (This list is not intended to be exhaustive.)
 
@@ -310,7 +347,7 @@ Some explanation:
 - Dont't use conditional stylesheets, use the html-class (e.g. .lt-ie9) instead to style directly in your block.
 
 
-### SASS Coding Guidelines
+## SASS Coding Guidelines
 
 (This list is not intended to be exhaustive.)
 
@@ -384,6 +421,8 @@ __Maximum Nesting: three levels deep__
 4. These SCSS-files will now be processed by the string-replace-task to get different placeholder-extends. They are saved into `sass/icons`.
 5. Now you can include your icons by using the `_grunticon.scss`-mixin. Just type `@include grunticon(name-of-your-icon);`.
 
+__Attention:__ Grunticon also produces icons as png-data-uris, mainly for ie8 and older android browsers. If you use lots of icons in your project, remove `@extend %icon-data-png-#{$name};` from the mixin and only extend the the svg and fallback version. Otherwise it could really hurt performance because of CSS-bloat!
+
 
 ## Questions?
 
@@ -398,7 +437,6 @@ If you're asking yourself »Why not …?« have a look at my [WHYNOT.md](https:/
 ## TODO
 
 - include JS, perhaps with bower
-- HTML-5-Guidelines
 - give _dist_ some love
 - give styleguide-template some default styling
 - add some example files, e.g. btn-class with extends
