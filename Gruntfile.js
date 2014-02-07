@@ -418,7 +418,7 @@ module.exports = function(grunt) {
 				},
 				options: {
 					replacements: [{
-						pattern: /^%icon-/g,
+						pattern: /%icon-/g,
 						replacement: '%icon-data-svg-'
 					}]
 				}
@@ -429,7 +429,7 @@ module.exports = function(grunt) {
 				},
 				options: {
 					replacements: [{
-						pattern: /^%icon-/g,
+						pattern: /%icon-/g,
 						replacement: '%icon-data-png-'
 					}]
 				}
@@ -440,7 +440,7 @@ module.exports = function(grunt) {
 				},
 				options: {
 					replacements: [{
-						pattern: /^%icon-/g,
+						pattern: /%icon-/g,
 						replacement: '%icon-fallback-'
 					}]
 				}

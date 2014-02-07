@@ -387,6 +387,7 @@ If you're asking yourself »Why not …?« have a look at my [WHYNOT.md](https:/
 ## TODO
 
 - include JS, perhaps with bower
+- HTML-5-Guidelines
 - give _dist_ some love
 - give styleguide-template some default styling
 - add some example files, e.g. btn-class with extends
