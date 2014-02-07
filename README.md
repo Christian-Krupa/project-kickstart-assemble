@@ -374,6 +374,17 @@ __Maximum Nesting: three levels deep__
 ```
 
 
+## Icon-Workflow
+
+1. Just put your SVG-Icons into `source/icons`.  
+2. All icons will be processed with the svgmin-task and put into the `svgmin-folder.  
+3. Afterwards the grunticon-task uses these icons to produce
+    1. PNG-fallback-files, which will be put into the `png-fallback`-folder
+    2. SCSS-files (all icons are included as data-URIs), which will be put into `sass/grunticon`.
+4. These SCSS-files will now be processed by the string-replace-task to get different placeholder-extends. They are saved into `sass/icons`.
+5. Now you can include your icons by using the `_grunticon.scss`-mixin. Just type `@include grunticon(name-of-your-icon);`.
+
+
 ## Questions?
 
 If you're asking yourself »Why not …?« have a look at my [WHYNOT.md](https://github.com/rastersysteme/project-kickstart-assemble/blob/master/WHY-NOT.md) file. There I might answer some common questions. :)
