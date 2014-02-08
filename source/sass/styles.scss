@@ -7,20 +7,20 @@
 // Compass
 @import "compass";
 
-// Mixins
-@import "mixins/**/*";
-
-// Extends
-@import "extends/**/*";
-
-// Variables
-@import "variables/**/*";
-
 // Webfonts
 @import "webfonts";
 
 // Browser-Reset
 @import "reset";
+
+// Variables
+@import "variables/**/*";
+
+// Mixins
+@import "mixins/**/*";
+
+// Extends
+@import "extends/**/*";
 
 // Basic Formatting
 @import "basics";

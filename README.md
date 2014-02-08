@@ -241,7 +241,6 @@ The `universal.scss` is a universal fallback stylesheet for older IE browsers ma
 This is how the `sass`-folder looks like:
 
 ```
-$ tree .
 .
 ├── _basics.scss
 ├── _reset.scss
@@ -258,7 +257,10 @@ $ tree .
 │   ├── _ellipsis.scss
 │   ├── _hide-text.scss
 │   ├── _ib.scss
-│   └── …
+│   ├── …
+│   └── ui-components
+│       ├── _buttons.scss
+│       └── …
 ├── grunticon
 ├── icons
 │   ├── _icons-data-png.scss
@@ -270,12 +272,12 @@ $ tree .
 │   ├── _respond-to.scss
 │   ├── _triangle.scss
 │   └── …
-├── variables
-│   ├── _color.scss
-│   ├── _typography.scss
-│   └── …
 ├── styles.scss
-└── universal.scss
+├── universal.scss
+└── variables
+    ├── _color.scss
+    ├── _typography.scss
+    └── …
 ```
 
 Some explanation:
@@ -285,9 +287,12 @@ Some explanation:
 - __webfonts.scss__ – use it for `@font-face`-declarations
 - __blocks/__ – all block-component-partials go in here
 - __extends/__ – put your placeholder-extends in here, e.g. `a11y`, `cf`, `hide-text` etc.
+- __extends/ui-components__ – put your ui-components in here, e.g. `buttons` etc.
 - __grunticon/__ – output by the grunticon-task, files will be processed by the string-replace-task afterwards
 - __icons/__ – output by the string-replace-task, you can use the grunticon-mixin to include the `%icons`
 - __mixins/__ – put your mixins in here, e.g. `px-to-rem`, `respond-to` etc.
+- __styles.scss__ – main stylesheet, includes all partials
+- __universal.scss__ – stylesheet for old browsers, based on [universal-ie6-css](https://code.google.com/p/universal-ie6-css/)
 - __variables/__ – put your variables in here, e.g. `color`, `typography` etc.
 
 
@@ -413,15 +418,15 @@ __Maximum Nesting: three levels deep__
 
 ## Icon-Workflow
 
-1. Just put your SVG-Icons into `source/icons`.  
-2. All icons will be processed with the svgmin-task and put into the `svgmin-folder.  
+1. Just put your SVG-Icons into `source/icons`.
+2. All icons will be processed with the svgmin-task and put into the `svgmin-folder.
 3. Afterwards the grunticon-task uses these icons to produce
     1. PNG-fallback-files, which will be put into the `png-fallback`-folder
     2. SCSS-files (all icons are included as data-URIs), which will be put into `sass/grunticon`.
 4. These SCSS-files will now be processed by the string-replace-task to get different placeholder-extends. They are saved into `sass/icons`.
 5. Now you can include your icons by using the `_grunticon.scss`-mixin. Just type `@include grunticon(name-of-your-icon);`.
 
-__Attention:__ Grunticon also produces icons as png-data-uris, mainly for ie8 and older android browsers. If you use lots of icons in your project, remove `@extend %icon-data-png-#{$name};` from the mixin and only extend the the svg and fallback version. Otherwise it could really hurt performance because of CSS-bloat!
+__Attention:__ Grunticon also produces icons as png-data-uris, mainly for ie8 and older android browsers. If you use lots of icons in your project, remove `@extend %icon-data-png-#{$name};` from the mixin and only extend the svg and fallback version. Otherwise it could really hurt performance because of CSS-bloat!
 
 
 ## Questions?
@@ -439,5 +444,4 @@ If you're asking yourself »Why not …?« have a look at my [WHYNOT.md](https:/
 - include JS, perhaps with bower
 - give _dist_ some love
 - give styleguide-template some default styling
-- add some example files, e.g. btn-class with extends
 - build folder: to add all new files to svn and remove all removed files from svn (without svn rm)
