@@ -541,6 +541,10 @@ module.exports = function(grunt) {
 					spawn: true
 				}
 			},
+			icons: {
+				files: ['source/img/icons/*.svg'],
+				tasks: ['svgmin', 'grunticon', 'string-replace']
+			},
 			images: {
 				files: ['source/img/*', 'source/img/**/*.{jpg,png}', '!source/img/dev/*'],
 				tasks: ['clean:images', 'imagemin:dev']
