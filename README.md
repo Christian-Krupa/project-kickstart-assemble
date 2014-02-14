@@ -77,6 +77,7 @@ If you dont't like the command line you can use an alternative called [grunt-dev
 - [grunt-svgmin](https://github.com/sindresorhus/grunt-svgmin)
 - [grunt-sync](https://github.com/tomusdrw/grunt-sync)
 - [grunticon](https://github.com/filamentgroup/grunticon)
+- [time-grunt](https://github.com/sindresorhus/time-grunt)
 
 
 ## Project structure

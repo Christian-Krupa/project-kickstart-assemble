@@ -2,7 +2,7 @@
   "name": "project-kickstart-assemble",
   "description": "A Project-Setup for Assemble",
   "homepage": "https://github.com/rastersysteme/project-kickstart-assemble",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "license": "MIT",
   "readmeFilename": "README.md",
   "repository": {
@@ -20,6 +20,9 @@
     "livereload",
     "styleguide"
   ],
+  "dependencies": {
+    "time-grunt": "~0.2.9"
+  },
   "devDependencies": {
     "assemble": "~0.4.32",
     "connect-livereload": "~0.3.1",
