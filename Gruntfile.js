@@ -72,14 +72,6 @@ module.exports = function(grunt) {
 						src: ['dist/**/*']
 					}
 				]
-			},
-			images: {
-				files: [
-					{
-						filter: 'isFile',
-						src: ['build/img/**/*.{jpg,png}', '!build/img/icons/**']
-					}
-				]
 			}
 		},
 		

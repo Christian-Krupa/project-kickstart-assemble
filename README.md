@@ -41,7 +41,7 @@ Or use `npm install` if your are on Windows (you have to check the requirements 
 3. `grunt dist` – start distribution build script
 
 
-## Grunt Devtools
+## Grunt-Devtools
 
 If you dont't like the command line you can use an alternative called [grunt-devtools](https://github.com/vladikoff/grunt-devtools) for the Chrome browser to start the grunt tasks.
 
@@ -78,6 +78,11 @@ If you dont't like the command line you can use an alternative called [grunt-dev
 - [grunt-sync](https://github.com/tomusdrw/grunt-sync)
 - [grunticon](https://github.com/filamentgroup/grunticon)
 - [time-grunt](https://github.com/sindresorhus/time-grunt)
+
+
+## Grunt-Notifications
+
+You don't like to stare permanently on your console? So wouldn’t it be great if your system could notify you when your fresh build is ready to consume or when anything bad happened? Meet [grunt-notify](https://github.com/dylang/grunt-notify), an automatic desktop notification service for Grunt using Growl for OS X or Windows, Mountain Lion and Mavericks Notification Center and Notify-Send. Just install this plugin via npm and load it in your Gruntfile.
 
 
 ## Project structure
