@@ -578,11 +578,11 @@ module.exports = function(grunt) {
 			},
 			icons: {
 				files: ['source/img/icons/*.svg'],
-				tasks: ['svgmin', 'grunticon', 'string-replace']
+				tasks: ['newer:svgmin', 'grunticon', 'string-replace']
 			},
 			images: {
 				files: ['source/img/*', 'source/img/**/*.{jpg,png}', '!source/img/dev/*'],
-				tasks: ['clean:images', 'imagemin:dev']
+				tasks: ['newer:imagemin:dev']
 			},
 			sync_ajax: {
 				files: ['source/ajax-content/**/*'],
@@ -594,11 +594,14 @@ module.exports = function(grunt) {
 			},
 			sync_js: {
 				files: ['source/js/**/*'],
-				tasks: ['sync:js']
+				tasks: ['sync:js'],
+				options: {
+					spawn: true
+				}
 			},
 			templates: {
 				files: ['source/assemble/**/*.{json,hbs}'],
-				tasks: ['assemble:dev', 'prettify:dev', 'htmlhint']
+				tasks: ['newer:assemble:dev', 'prettify:dev', 'htmlhint']
 			}
 		}
 	});
@@ -637,10 +640,10 @@ module.exports = function(grunt) {
 	// Build task
 	grunt.registerTask('build', [
 		'clean:dev',
-		'svgmin',
+		'newer:svgmin',
 		'grunticon',
 		'string-replace',
-		'imagemin:dev',
+		'newer:imagemin:dev',
 		'compass:dev',
 		'autoprefixer:dev',
 		'packager',

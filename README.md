@@ -11,7 +11,7 @@ This is how I start Assemble-Projects as a Frontend-Developer.
 - [__Livereload__](http://livereload.com/) – browser auto refresh
 - [__KSS__](http://warpspire.com/kss/) – living styleguide
 
-Grunt depends on [node.js](http://nodejs.org), Sass depends on [Ruby](http://www.ruby-lang.org). Some of the [Grunt plugins](#grunt-plugins-used) depend on command line tools to be installed on your (build) system.
+Grunt depends on [node.js](http://nodejs.org), Sass and Compass depends on [Ruby](http://www.ruby-lang.org). Some of the [Grunt plugins](#grunt-plugins-used) depend on command line tools to be installed on your (build) system.
 
 
 ## Requirements
