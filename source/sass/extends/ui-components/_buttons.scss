@@ -17,17 +17,20 @@ button {
 	margin: 0;
 	border: 0;
 	padding: 0;
-	font-family: $base-font;
 	background-color: transparent;
 }
+
 
 // Standard Button-Placeholder
 %btn {
 	display: inline-block;
 	position: relative;
+	font-family: $base-font;
 	text-align: center;
 	text-decoration: none;
+	@include font-smoothing(on);
 	cursor: pointer;
+	transition: all 0.4s ease-out;
 }
 
 %btn:focus,

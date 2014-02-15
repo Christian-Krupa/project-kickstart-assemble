@@ -12,6 +12,7 @@ body {
 	font-weight: 400;
 	line-height: $base-lineheight;
 	text-align: left;
+	text-rendering: optimizeLegibility;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 	color: $main-color;
@@ -30,6 +31,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	font-family: $headline-font;
 	font-weight: 400;
+	@include font-smoothing(on);
 }
 
 
