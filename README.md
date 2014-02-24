@@ -25,6 +25,18 @@ These are the minimum requirements for my project setup:
 - [__Compass 1__](http://rubygems.org/gems/compass/versions) (atm in ALPHA-state) – `sudo gem install compass --pre`
 
 It's mandatory to use the latest versions of SASS and Compass if you want to work with [__CSS Source Maps__](https://developers.google.com/chrome-developer-tools/docs/css-preprocessors) in Google Chrome.  
+If you're experiencing problems with compass, it could be related to the fact, that both Compass and Sass are in pre-release state. Here's an example of my working configuration:  
+
+```
+$ gem list
+
+compass (1.0.0.alpha.17)
+compass-core (1.0.0.alpha.16)
+compass-import-once (1.0.2)
+sass (3.3.0.rc.2)
+sass-globbing (1.1.0)
+```
+
 If you want to use the browser-auto-refresh-feature, get [__LiveReload.js__](https://github.com/livereload/livereload-js) and install it to the root-folder of localhost.
 
 

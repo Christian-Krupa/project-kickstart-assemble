@@ -1,6 +1,6 @@
 // 
-// center mixin
-// ------------
+// centering mixin
+// ---------------
 // 
 // This mixin is used for horizontally and/or vertically centering elements.
 // 
@@ -22,14 +22,14 @@
 //     position: absolute;
 //     z-index: 1;
 //     top: 50%;
-//     transform: translate(0, -50%);
+//     transform: translateY(-50%);
 // }
 // 
 // .element-2 {
 //     position: absolute;
 //     z-index: 1;
 //     left: 50%;
-//     transform: translate(-50%, 0);
+//     transform: translateX(-50%);
 // }
 // 
 // .element-3 {
@@ -50,14 +50,14 @@
 	@if $scope == "horiz" {
 		& {
 			top: 50%;
-			transform: translate(0, -50%);
+			transform: translateY(-50%);
 		}
 	}
 	
 	@if $scope == "vert" {
 		& {
 			left: 50%;
-			transform: translate(-50%, 0);
+			transform: translateX(-50%);
 		}
 	}
 	
