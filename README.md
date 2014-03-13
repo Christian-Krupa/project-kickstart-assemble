@@ -20,20 +20,21 @@ These are the minimum requirements for my project setup:
  
 - [__Node.js & Node Package Manager__](http://nodejs.org)
 - [__Grunt Command Line Interface__](http://gruntjs.com/getting-started) – `sudo npm install -g grunt-cli`
-- [__SASS 3.3__](http://rubygems.org/gems/sass/versions/) (atm in RC-state) – `sudo gem install sass --pre`
+- [__SASS 3.3__](http://rubygems.org/gems/sass/versions/) – `sudo gem install sass`
 - [__SASS Globbing 1.1__](http://rubygems.org/gems/sass-globbing/versions) – `sudo gem install sass-globbing`
 - [__Compass 1__](http://rubygems.org/gems/compass/versions) (atm in ALPHA-state) – `sudo gem install compass --pre`
 
-It's mandatory to use the latest versions of SASS and Compass if you want to work with [__CSS Source Maps__](https://developers.google.com/chrome-developer-tools/docs/css-preprocessors) in Google Chrome.  
-If you're experiencing problems with Compass, it could be related to the fact, that both Compass and Sass are in pre-release state. Here's an example of my working configuration:  
+It's mandatory to use the latest versions of SASS and Compass if you want to work with [__CSS Source Maps__](https://developers.google.com/chrome-developer-tools/docs/css-preprocessors) in Google Chrome.
+
+If you're experiencing problems with Compass, it could be related to the fact, that it is in pre-release state. Here's an example of my working configuration:  
 
 ```
 $ gem list
 
-compass (1.0.0.alpha.17)
-compass-core (1.0.0.alpha.16)
-compass-import-once (1.0.2)
-sass (3.3.0.rc.2)
+compass (1.0.0.alpha.19)
+compass-core (1.0.0.alpha.19)
+compass-import-once (1.0.3)
+sass (3.3.2)
 sass-globbing (1.1.0)
 ```
 
