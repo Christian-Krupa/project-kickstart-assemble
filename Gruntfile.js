@@ -450,7 +450,7 @@ module.exports = function(grunt) {
 				},
 				name: 'Style Guide',
 				framework: {
-					name: 'kss',
+					name: 'kss'
 				}
 			},
 			all: {
